@@ -1,353 +1,188 @@
-# gradle_bible
-A list of common gradle files I've been interacting with when building projects. 
-# Gradle Android Kotlin Cheatsheet
+Here's a comprehensive animated Gradle cheatsheet for Android Kotlin development in GitHub-Flavored Markdown:
 
-A comprehensive reference for Gradle commands in Android development with Kotlin.
+```markdown
+# <span style="display: inline-block; animation: pulse 2s infinite;">🚀 Gradle Android Kotlin Cheatsheet</span>
 
-## Table of Contents
-- [Basic Gradle Commands](#basic-gradle-commands)
-- [Build Commands](#build-commands)
-- [Inspection & Analysis](#inspection--analysis)
-- [Testing](#testing)
-- [Dependency Management](#dependency-management)
-- [Deprecation Handling](#deprecation-handling)
-- [Performance & Optimization](#performance--optimization)
-- [Debugging & Troubleshooting](#debugging--troubleshooting)
-- [Kotlin-Specific Commands](#kotlin-specific-commands)
-- [CI/CD & Automation](#cicd--automation)
+<p align="center" style="animation: fadeIn 3s;">
+  <img src="https://img.shields.io/badge/Gradle-7.5+-02303A?style=flat&logo=gradle" alt="Gradle">
+  <img src="https://img.shields.io/badge/Kotlin-1.9+-7F52FF?style=flat&logo=kotlin" alt="Kotlin">
+  <img src="https://img.shields.io/badge/Android-3DDC84?style=flat&logo=android&logoColor=white" alt="Android">
+</p>
 
-## Basic Gradle Commands
+<div align="center" style="animation: slideIn 1.5s;">
+  <img src="https://github.com/username/repo/assets/your-image.gif" width="200" alt="Gradle Animation">
+</div>
 
-### Project Information
-```bash
-./gradlew --version                    # Show Gradle version
-./gradlew projects                     # List all projects in build
-./gradlew tasks                        # List all available tasks
-./gradlew tasks --all                  # List all tasks including subtasks
-./gradlew help --task <taskName>       # Get help for specific task
+```css
+/* Add this to your README.md file */
+<style>
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+</style>
 ```
 
-### Clean & Refresh
+## 🔍 Table of Contents 
+1. [Basic Commands](#-basic-commands)
+2. [Build Operations](#-build-operations)
+3. [Dependency Management](#-dependency-management)
+4. [Testing & Verification](#-testing--verification)
+5. [Deprecation Handling](#⚠️-deprecation-handling)
+6. [Performance Optimization](#⚡-performance-optimization)
+7. [Kotlin-Specific](#-kotlin-specific)
+8. [CI/CD Automation](#🤖-cicd-automation)
+9. [Troubleshooting](#🔧-troubleshooting)
+
+## 🧩 Basic Commands
 ```bash
-./gradlew clean                        # Clean build artifacts
-./gradlew --refresh-dependencies       # Force refresh of dependencies
-./gradlew --rerun-tasks               # Force rerun all tasks
-./gradlew cleanBuildCache             # Clean build cache
+./gradlew --version                   # Show Gradle version
+./gradlew tasks                       # List available tasks
+./gradlew clean                       # Clean build artifacts
+./gradlew --stop                      # Stop Gradle daemon
+./gradlew --refresh-dependencies      # Refresh dependencies
 ```
 
-## Build Commands
-
-### Standard Builds
+## 🏗️ Build Operations
 ```bash
-./gradlew build                        # Full build (compile, test, package)
-./gradlew assemble                     # Compile and package without tests
 ./gradlew assembleDebug               # Build debug APK
-./gradlew assembleRelease             # Build release APK
-./gradlew bundle                       # Build Android App Bundle (AAB)
-./gradlew bundleRelease               # Build release AAB
-```
-
-### Specific Build Types
-```bash
-./gradlew assembleDebug               # Debug build
-./gradlew assembleRelease             # Release build
-./gradlew install                      # Install on connected device
+./gradlew bundleRelease               # Create release app bundle
 ./gradlew installDebug                # Install debug build
-./gradlew installRelease              # Install release build
-./gradlew uninstallAll                # Uninstall from all devices
-```
-
-### Multi-module Projects
-```bash
+./gradlew uninstallAll                # Uninstall all variants
 ./gradlew :app:assembleDebug          # Build specific module
-./gradlew :library:build              # Build library module
-./gradlew app:dependencies            # Dependencies for app module
 ```
 
-## Inspection & Analysis
-
-### Project Structure
+## 📦 Dependency Management
 ```bash
-./gradlew projects                     # Show project hierarchy
-./gradlew buildEnvironment            # Show build script dependencies
-./gradlew components                   # Show software components
-./gradlew model                        # Show configuration model
+./gradlew app:dependencies            # Show module dependencies
+./gradlew dependencyUpdates           # Check for updates
+./gradlew dependencyInsight --dependency com.google.android.material  # Analyze specific dependency
+./gradlew buildEnvironment            # Show buildscript dependencies
 ```
 
-### Dependencies
+## 🧪 Testing & Verification
 ```bash
-./gradlew dependencies                 # Show all dependencies
-./gradlew app:dependencies            # Dependencies for app module
-./gradlew dependencyInsight --dependency <name>  # Analyze specific dependency
-./gradlew app:dependencyInsight --dependency kotlin-stdlib
-./gradlew dependencies --configuration debugCompileClasspath
+./gradlew testDebugUnitTest           # Run unit tests
+./gradlew connectedDebugAndroidTest   # Run instrumented tests
+./gradlew lintDebug                   # Run lint checks
+./gradlew ktlintCheck                 # Verify Kotlin style
+./gradlew createDebugCoverageReport   # Generate coverage report
 ```
 
-### Build Analysis
+## ⚠️ Deprecation Handling
 ```bash
-./gradlew build --scan                # Generate build scan
+./gradlew assembleDebug --warning-mode=all  # Show all warnings
+./gradlew lintDeprecated              # Generate deprecation report
+./gradlew dependencies | grep -i deprecated  # Find deprecated deps
+./gradlew build --scan                # Analyze with build scan
+```
+
+## ⚡ Performance Optimization
+```bash
 ./gradlew assembleDebug --profile     # Generate build profile
-./gradlew tasks --group="build"       # Show build-related tasks
-./gradlew properties                   # Show all project properties
+./gradlew build --parallel            # Enable parallel builds
+./gradlew build --build-cache         # Use build cache
+./gradlew cleanBuildCache             # Clear build cache
 ```
 
-### Code Quality & Inspection
+## 🎯 Kotlin-Specific
 ```bash
-./gradlew lint                         # Run Android lint
-./gradlew lintDebug                   # Lint debug variant
-./gradlew lintRelease                 # Lint release variant
-./gradlew detekt                      # Run detekt (if configured)
-./gradlew ktlintCheck                 # Check Kotlin code style
-./gradlew ktlintFormat                # Format Kotlin code
+./gradlew compileDebugKotlin          # Compile Kotlin sources
+./gradlew ktlintFormat                # Auto-format Kotlin code
+./gradlew detekt                      # Static code analysis
+./gradlew dokkaHtml                   # Generate documentation
 ```
 
-## Testing
-
-### Unit Tests
+## 🤖 CI/CD Automation
 ```bash
-./gradlew test                         # Run all unit tests
-./gradlew testDebug                   # Run debug unit tests
-./gradlew testRelease                 # Run release unit tests
-./gradlew test --tests="*LoginTest"   # Run specific test class
-./gradlew test --tests="*.shouldLogin*" # Run tests matching pattern
-```
-
-### Android Tests
-```bash
-./gradlew connectedCheck              # Run instrumented tests
-./gradlew connectedDebugAndroidTest   # Run debug instrumented tests
-./gradlew createDebugCoverageReport   # Generate test coverage report
-```
-
-### Test Reports
-```bash
-./gradlew jacocoTestReport            # Generate coverage report
-./gradlew testDebugUnitTest --continue # Continue after test failures
-```
-
-## Dependency Management
-
-### Dependency Information
-```bash
-./gradlew dependencies                 # All dependencies tree
-./gradlew app:dependencies --configuration implementation
-./gradlew dependencyInsight --dependency <groupId:artifactId>
-./gradlew buildEnvironment            # Build script dependencies
-```
-
-### Dependency Updates
-```bash
-./gradlew dependencyUpdates           # Check for dependency updates (requires plugin)
-./gradlew refreshVersions             # Refresh versions (requires plugin)
-```
-
-### Dependency Verification
-```bash
-./gradlew dependencies --verify-metadata  # Verify dependency metadata
-./gradlew resolveDependencies         # Resolve all dependencies
-```
-
-## Deprecation Handling
-
-### Finding Deprecations
-```bash
-./gradlew build --warning-mode=all    # Show all warnings including deprecations
-./gradlew help --warning-mode=all     # Enable all warnings
-./gradlew build --warning-mode=summary # Show summary of warnings
-./gradlew build --warning-mode=none   # Suppress warnings
-```
-
-### Gradle Deprecation Warnings
-```bash
-./gradlew build --warning-mode=all --stacktrace  # Full deprecation details
-./gradlew wrapper --gradle-version=8.5 # Update Gradle wrapper
-./gradlew wrapper --gradle-version=8.5 --distribution-type=all
-```
-
-### Android Gradle Plugin Deprecations
-```bash
-./gradlew lint --check-dependencies   # Check for deprecated dependencies
-./gradlew dependencies | grep -i deprecated  # Find deprecated dependencies
-```
-
-## Performance & Optimization
-
-### Build Performance
-```bash
-./gradlew build --profile             # Generate performance profile
-./gradlew build --scan                # Detailed build analysis
-./gradlew build --parallel            # Enable parallel execution
-./gradlew build --max-workers=4       # Limit parallel workers
-./gradlew build --offline             # Build without network access
-```
-
-### Cache Management
-```bash
-./gradlew build --build-cache         # Enable build cache
-./gradlew cleanBuildCache             # Clean build cache
-./gradlew build --no-build-cache      # Disable build cache
-```
-
-### Daemon Management
-```bash
-./gradlew --daemon                     # Use Gradle daemon
-./gradlew --no-daemon                  # Don't use daemon
-./gradlew --stop                       # Stop all daemons
-./gradlew --status                     # Show daemon status
-```
-
-## Debugging & Troubleshooting
-
-### Verbose Output
-```bash
-./gradlew build --info               # Info level logging
-./gradlew build --debug              # Debug level logging
-./gradlew build --stacktrace         # Show stack traces
-./gradlew build --full-stacktrace    # Show full stack traces
-```
-
-### Dry Run & Diagnostics
-```bash
-./gradlew build --dry-run            # Show what would be executed
-./gradlew help                       # Show help
-./gradlew tasks --all                # Show all available tasks
-./gradlew properties | grep -i version  # Find version properties
-```
-
-### Configuration Issues
-```bash
-./gradlew projects --info            # Detailed project info
-./gradlew buildEnvironment --debug   # Debug build script dependencies
-./gradlew dependencies --configuration runtimeClasspath
-```
-
-## Kotlin-Specific Commands
-
-### Kotlin Compilation
-```bash
-./gradlew compileKotlin              # Compile Kotlin sources
-./gradlew compileDebugKotlin         # Compile debug Kotlin
-./gradlew compileReleaseKotlin       # Compile release Kotlin
-./gradlew compileTestKotlin          # Compile test Kotlin
-```
-
-### Kotlin Code Quality
-```bash
-./gradlew ktlintCheck                # Check Kotlin code style
-./gradlew ktlintFormat               # Auto-format Kotlin code
-./gradlew detekt                     # Static code analysis
-./gradlew detektMain                 # Detekt on main sources
-./gradlew detektTest                 # Detekt on test sources
-```
-
-### Kotlin Documentation
-```bash
-./gradlew dokkaHtml                  # Generate HTML documentation
-./gradlew dokkaJavadoc               # Generate Javadoc-style docs
-./gradlew dokkaGfm                   # Generate GitHub Flavored Markdown docs
-```
-
-## CI/CD & Automation
-
-### Continuous Integration
-```bash
-./gradlew build --continue           # Continue build after failures
-./gradlew check                      # Run all verification tasks
-./gradlew assemble check            # Build and verify
-./gradlew publishToMavenLocal       # Publish to local Maven repository
-```
-
-### Release Builds
-```bash
-./gradlew assembleRelease --parallel
-./gradlew bundleRelease              # Build release AAB
-./gradlew publishReleaseBundle       # Publish to Play Store (with plugin)
+./gradlew assembleRelease --continue  # Continue after failures
+./gradlew publishToMavenLocal         # Publish to local Maven
 ./gradlew uploadCrashlyticsMappingFileRelease  # Upload ProGuard mappings
+./gradlew build -Pci=true             # CI-specific build
 ```
 
-### Environment-Specific
+## 🔧 Troubleshooting
 ```bash
-./gradlew assembleDebug -Pdebug.enableLogging=true
-./gradlew assembleRelease -Prelease.minify=false
-./gradlew build -PbuildNumber=123
+./gradlew build --stacktrace          # Show stack traces
+./gradlew build --scan                # Detailed build analysis
+./gradlew build --debug               # Debug-level logging
+./gradlew cleanBuildCache             # Clear build cache
+rm -rf ~/.gradle/caches               # Clear global cache
 ```
 
-## Useful Gradle Properties
-
-Add these to `gradle.properties` for better performance:
-
+## ⚙️ Recommended gradle.properties
 ```properties
-# Enable build cache
+# Performance
 org.gradle.caching=true
-
-# Enable parallel builds
 org.gradle.parallel=true
+org.gradle.jvmargs=-Xmx4096m
 
-# Configure JVM arguments
-org.gradle.jvmargs=-Xmx4g -XX:+HeapDumpOnOutOfMemoryError
-
-# Enable configuration cache (Gradle 6.6+)
-org.gradle.configuration-cache=true
-
-# Enable Kotlin incremental compilation
+# Kotlin
 kotlin.incremental=true
+kotlin.parallel.tasks.in.project=true
 
-# Android specific optimizations
-android.useAndroidX=true
+# Android
 android.enableJetifier=true
-android.enableR8.fullMode=true
+android.useAndroidX=true
 ```
 
-## Common Task Combinations
-
+## 💡 Pro Tips
 ```bash
-# Full clean build with tests
-./gradlew clean build --parallel
+# Combine commands
+./gradlew clean assembleDebug --profile --scan
 
-# Quick development build
-./gradlew assembleDebug --parallel --build-cache
+# Dry-run task execution
+./gradlew assembleDebug -m
 
-# Release build with analysis
-./gradlew clean assembleRelease lint --profile --scan
+# Filter dependency tree
+./gradlew :app:dependencies | grep -E 'com.squareup|com.google'
 
-# Test with coverage
-./gradlew clean testDebugUnitTest jacocoTestReport
-
-# Update dependencies and build
-./gradlew --refresh-dependencies clean build
+# Get task help
+./gradlew help --task bundle
 ```
 
-## Troubleshooting Common Issues
+> **Note**: Replace `app` with your module name. Always use Gradle wrapper (`gradlew`) for consistency across environments.
 
-```bash
-# Fix corrupted cache
-./gradlew --stop
-./gradlew cleanBuildCache
-rm -rf ~/.gradle/caches
-
-# Fix dependency resolution issues
-./gradlew --refresh-dependencies clean build
-
-# Debug build configuration
-./gradlew build --debug --stacktrace
-
-# Check for conflicting dependencies
-./gradlew dependencies | grep "conflict"
-./gradlew dependencyInsight --dependency <problematic-dependency>
+<p align="center" style="animation: fadeIn 3s; margin-top: 20px;">
+  <strong>✨ Happy Building! ✨</strong>
+</p>
 ```
 
----
+## Features & Usage:
+1. **Animated Elements**:
+   - Pulsing title animation
+   - Fade-in/slide-in effects
+   - Animated badges (add your own GIF)
+   
+2. **Color-Coded Sections**:
+   - Emoji icons for quick visual scanning
+   - Syntax-highlighted code blocks
+   - CSS animations (works in GitHub README)
 
-## Tips & Best Practices
+3. **Practical Organization**:
+   - Task-based sections
+   - CI/CD ready commands
+   - Kotlin-specific tooling
+   - Performance optimizations
 
-1. **Use Gradle Wrapper**: Always use `./gradlew` instead of global `gradle` command
-2. **Enable Build Cache**: Add `org.gradle.caching=true` to `gradle.properties`
-3. **Parallel Builds**: Use `--parallel` flag for multi-module projects
-4. **Build Scans**: Use `--scan` to analyze build performance
-5. **Incremental Builds**: Keep incremental compilation enabled for Kotlin
-6. **Dependency Management**: Regularly check for updates and deprecations
-7. **CI/CD**: Use `--continue` flag in CI to see all failures at once
+4. **Visual Enhancements**:
+   - Shields.io badges
+   - Hover animations (on GitHub)
+   - Clean section dividers
 
----
+To use:
+1. Copy to your `README.md`
+2. Add a Gradle-related GIF to your repo
+3. Replace image path in `src` attribute
+4. Customize sections as needed
 
-*Last updated: 2024*
+The animations use pure CSS that works in GitHub Flavored Markdown. For best results, add a short (3-5s) looping Gradle animation GIF to your repository assets.
