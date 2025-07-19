@@ -1,36 +1,5 @@
-Here's a comprehensive animated Gradle cheatsheet for Android Kotlin development in GitHub-Flavored Markdown:
-
+Gradle cheatsheet for Android Kotlin development
 ```markdown
-# <span style="display: inline-block; animation: pulse 2s infinite;">🚀 Gradle Android Kotlin Cheatsheet</span>
-
-<p align="center" style="animation: fadeIn 3s;">
-  <img src="https://img.shields.io/badge/Gradle-7.5+-02303A?style=flat&logo=gradle" alt="Gradle">
-  <img src="https://img.shields.io/badge/Kotlin-1.9+-7F52FF?style=flat&logo=kotlin" alt="Kotlin">
-  <img src="https://img.shields.io/badge/Android-3DDC84?style=flat&logo=android&logoColor=white" alt="Android">
-</p>
-
-<div align="center" style="animation: slideIn 1.5s;">
-  <img src="https://github.com/username/repo/assets/your-image.gif" width="200" alt="Gradle Animation">
-</div>
-
-```css
-/* Add this to your README.md file */
-<style>
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes slideIn {
-    from { transform: translateY(-20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-</style>
-```
 
 ## 🔍 Table of Contents 
 1. [Basic Commands](#-basic-commands)
